@@ -1,0 +1,24 @@
+---
+
+- name: Ensure the Supervisor service is running
+  service: name=supervisor state=started enabled=yes
+
+- name: Create the Supervisor config file for {{ celerybeat_application_name }}
+  template: src=supervisor_{{ celerybeat_application_name }}.conf.j2
+            dest=/etc/supervisor/conf.d/{{ celerybeat_application_name }}.conf
+
+- name: Create the {{ celerybeat_application_name }} log directory
+  file: path={{ celerybeat_log_dir }}
+        owner={{ celerybeat_user }}
+        group={{ celerybeat_group }}
+        state=directory
+
+- name: Create (or retain) the {{ celerybeat_application_name }} log file
+  copy: content=""
+        dest={{ celerybeat_log_file }}
+        owner={{ celerybeat_user }}
+        group={{ celerybeat_group }}
+        force=no
+
+- name: Re-read the Supervisor config files
+  supervisorctl: name={{ celerybeat_application_name }} state=present

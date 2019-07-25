@@ -1,0 +1,16 @@
+---
+
+server_root_dir: /webapps
+
+virtualenv_path: "/webapps/{{ application_name }}"
+project_path: "{{ virtualenv_path }}/{{ project_name }}"
+
+celerybeat_user: "{{ application_name }}"
+celerybeat_group: webapps
+
+celerybeat_application_name: celerybeat
+celerybeat_scripts_dir: "{{ virtualenv_path }}/scripts/celerybeat"
+celerybeat_template_file: "{{ celerybeat_application_name }}_start.j2"
+
+celerybeat_log_dir: "{{ virtualenv_path }}/logs"
+celerybeat_log_file: "{{ celerybeat_log_dir }}/{{ celerybeat_application_name }}.log"

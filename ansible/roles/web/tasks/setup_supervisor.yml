@@ -1,0 +1,20 @@
+---
+
+- name: Ensure the Supervisor service is running
+  service: name=supervisor state=started enabled=yes
+
+- name: Create the Supervisor config file
+  template: src=gunicorn_supervisor_config.j2
+            dest=/etc/supervisor/conf.d/{{ application_name }}_wsgi.conf
+            backup=yes
+
+- name: Re-read the Supervisor config files
+  supervisorctl: name={{ application_name }}_wsgi state=present
+
+- name: Create the Supervisor config file
+  template: src=daphne_supervisor_config.j2
+            dest=/etc/supervisor/conf.d/{{ application_name }}_asgi.conf
+            backup=yes
+
+- name: Re-read the Supervisor config files
+  supervisorctl: name={{ application_name }}_asgi state=present

@@ -1,0 +1,120 @@
+{% extends "base_landing.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/landing.css" %}"/>
+    {{ form.media }}
+{% endblock %}
+
+{% block intro %}
+
+    <div class="mask">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="d-flex align-items-center content-height">
+                <div class="row flex-center pt-5 mt-3">
+                    <div class="col-md-6 text-center text-md-left mb-5">
+                        <div class="card wow fadeInLeft" data-wow-delay="0.3s">
+                            <div class="card-body white-text">
+                                <h3 class="h3-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">
+                                    {% blocktrans trimmed %}Take control of your money{% endblocktrans %}
+                                </h3>
+                                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
+                                    {% blocktrans trimmed %}
+                                        Have you ever wondered where your money goes? Have you ever noticed that you
+                                        work hard, earn a lot but the money's dried up? Do you have a cherished dream
+                                        but you still don't know how to save up for it? Household Budget is the key to
+                                        reaching your goals and making your dreams come true.
+                                    {% endblocktrans %}</h6>
+                                <br>
+                                <a class="btn btn-outline-white btn-rounded wow fadeInLeft" data-wow-delay="0.3s">Learn
+                                    more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-5 offset-xl-1">
+                        {% comment %}
+                        <!-- Form -->
+                        <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                            <div class="card-body">
+                                <!-- Header -->
+                                <div class="text-center">
+                                    <h3 class="white-text"><i class="fas fa-user white-text"></i> Register:</h3>
+                                    <hr class="hr-light">
+                                </div>
+
+                                <!-- Body -->
+                                <form action="{% url 'customer-signup' %}" method="post">{% csrf_token %}
+                                    <div class="md-form">
+                                        <i class="fas fa-envelope prefix white-text"></i>
+                                        <input type="text" id="form2" class="form-control" name="email">
+                                        <label for="form2" class="white-text">Your email</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <i class="fas fa-lock prefix white-text"></i>
+                                        <input type="password" id="form4" class="form-control" name="password1">
+                                        <label for="form4" class="white-text">Your password</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <i class="fas fa-redo prefix white-text"></i>
+                                        <input type="password" id="form3" class="form-control" name="password2">
+                                        <label for="form3" class="white-text">Password confirmation</label>
+                                    </div>
+
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-light-blue btn-rounded">Sign up</button>
+                                        <hr class="hr-light mb-3 mt-4">
+
+                                        <div class="inline-ul text-center d-flex justify-content-center">
+                                            <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text"></i></a>
+                                            <a class="p-2 m-2 fa-lg li-ic">
+                                                <i class="fab fa-linkedin-in white-text"> </i></a>
+                                            <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.Form -->
+                        {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+    <!--Main Layout-->
+    <main>
+
+        <div class="container">
+
+            {% include "includes/features.html" %}
+
+            <hr class="mb-5">
+
+            {% include "includes/testimonials.html" %}
+
+            <hr class="mb-5">
+
+            {% include "includes/pricing.html" %}
+
+            <hr class="mb-5">
+
+            {% include "includes/contact.html" %}
+
+        </div>
+
+    </main>
+    <!--Main Layout-->
+
+    {% include "includes/footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,5 @@
+[program:{{ application_name }}_asgi]
+command = {{ virtualenv_path }}/bin/daphne_start
+user = {{ daphne_user }}
+stdout_logfile = {{ asgi_application_log_file }}
+redirect_stderr = true

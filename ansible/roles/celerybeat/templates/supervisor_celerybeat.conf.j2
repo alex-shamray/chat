@@ -1,0 +1,10 @@
+[program:{{ celerybeat_application_name }}]
+command={{ celerybeat_scripts_dir }}/{{ celerybeat_application_name }}_start
+
+autostart=true
+autorestart=true
+
+user={{ celerybeat_user }}
+
+stdout_logfile={{ celerybeat_log_file }}
+redirect_stderr = true

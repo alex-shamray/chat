@@ -1,0 +1,24 @@
+{% extends "base_site.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Chat' %}{% endblock %}
+
+{% block content %}
+
+    <div id="chat_container"></div>
+
+{% endblock %}
+
+{% block extrascript %}
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="{% static 'js/chat/chat.js' %}"></script>
+    <script>
+        const domContainer = document.querySelector('#chat_container');
+        ReactDOM.render(React.createElement(Chat, {roomName: {{ object.id }}, user: {{ person.id }}}), domContainer);
+    </script>
+{% endblock %}

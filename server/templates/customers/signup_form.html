@@ -1,0 +1,87 @@
+{% extends "base_landing.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/landing.css" %}"/>
+    {{ form.media }}
+{% endblock %}
+
+{% block intro %}
+
+    <div class="mask rgba-gradient">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="d-flex align-items-center content-height">
+                <div class="row flex-center pt-5 mt-3">
+                    <div class="col-md-6 text-center text-md-left mb-5">
+                        <div class="white-text">
+                            <h1 class="h1-responsive font-weight-bold">Sign up right now! </h1>
+                            <hr class="hr-light">
+                            <h6>Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Rem repellendus quasi fuga
+                                nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
+                                dolor molestiae, quisquam iste, maiores. Nulla.</h6>
+                            <br>
+                            <a class="btn btn-outline-white btn-rounded">Learn more</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-5 offset-xl-1">
+                        <!-- Form -->
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Header -->
+                                <div class="text-center">
+                                    <h3 class="white-text"><i class="fa fa-user white-text"></i> Register:</h3>
+                                    <hr class="hr-light">
+                                </div>
+
+                                <!-- Body -->
+                                <form method="post">{% csrf_token %}
+                                    <div class="md-form">
+                                        <i class="fas fa-envelope prefix white-text"></i>
+                                        {{ form.email }}
+                                        <label for="{{ form.email.id_for_label }}" class="white-text">
+                                            {{ form.email.label }}</label>
+                                        {{ form.email.errors }}
+                                    </div>
+
+                                    <div class="md-form">
+                                        <i class="fas fa-lock prefix white-text"></i>
+                                        {{ form.password1 }}
+                                        <label for="{{ form.password1.id_for_label }}" class="white-text">
+                                            {{ form.password1.label }}</label>
+                                        {{ form.password1.errors }}
+                                    </div>
+
+                                    <div class="md-form">
+                                        <i class="fas fa-redo prefix white-text"></i>
+                                        {{ form.password2 }}
+                                        <label for="{{ form.password2.id_for_label }}" class="white-text">
+                                            {{ form.password2.label }}</label>
+                                        {{ form.password2.errors }}
+                                        {{ form.non_field_errors }}
+                                    </div>
+
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-light-blue btn-rounded">Sign up</button>
+                                        <hr class="hr-light mb-3 mt-4">
+
+                                        <div class="inline-ul text-center d-flex justify-content-center">
+                                            <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text"></i></a>
+                                            <a class="p-2 m-2 fa-lg li-ic">
+                                                <i class="fab fa-linkedin-in white-text"> </i></a>
+                                            <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

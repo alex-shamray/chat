@@ -1,0 +1,22 @@
+{% load core_tags %}
+
+{% if is_paginated %}
+    <!--Pagination-->
+    <nav aria-label="pagination example">
+        <ul class="pagination justify-content-center pg-blue">
+
+            {% pagerange page_obj %}
+                {% if page_obj.number == page %}
+                    <li class="page-item active">
+                        <a class="page-link" href="#">{{ page_obj.number }} <span class="sr-only">(current)</span></a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page }}&{{ request.GET.urlencode }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endpagerange %}
+
+        </ul>
+    </nav>
+{% endif %}

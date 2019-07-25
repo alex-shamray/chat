@@ -1,0 +1,48 @@
+---
+
+# Virtualenv settings.
+recreate_virtualenv: no
+virtualenv_python_version: "{{ base_python_package }}"
+
+
+# Application settings.
+virtualenv_path: "/webapps/{{ application_name }}"
+repository_path: "{{ virtualenv_path }}/{{ project_name }}"
+project_path: "{{ virtualenv_path }}/{{ project_name }}"
+application_log_dir: "{{ virtualenv_path }}/logs"
+wsgi_application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+asgi_application_log_file: "{{ application_log_dir }}/daphne_supervisor.log"
+requirements_file: "{{ project_path }}/requirements.txt"
+packages_file: "{{ project_path }}/packages.txt"
+
+
+# Gunicorn settings.
+gunicorn_user: "{{ application_name }}"
+gunicorn_group: webapps
+gunicorn_use_reload: no
+
+
+# Daphne settings.
+daphne_user: "{{ application_name }}"
+daphne_group: webapps
+
+
+# Nginx settings.
+nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
+nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
+nginx_static_dir: "{{ virtualenv_path }}/static/"
+nginx_media_dir: "{{ virtualenv_path }}/media/"
+
+
+# Django environment variables.
+django_environment:
+  DJANGO_SETTINGS_MODULE: "{{ django_settings_file }}"
+  DJANGO_SECRET_KEY: "{{ django_secret_key }}"
+  DJANGO_DEBUG: "{{ django_debug }}"
+  MEDIA_ROOT: "{{ nginx_media_dir }}"
+  STATIC_ROOT: "{{ nginx_static_dir }}"
+  DATABASE_NAME: "{{ db_name }}"
+  DATABASE_USER: "{{ db_user }}"
+  DATABASE_PASSWORD: "{{ db_password }}"
+  DATABASE_HOST: "{{ db_host }}"
+  BROKER_URL: "{{ broker_url }}"

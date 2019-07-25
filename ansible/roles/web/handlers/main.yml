@@ -1,0 +1,4 @@
+---
+
+- name: restart application
+  supervisorctl: name={{ application_name }}_wsgi state=restarted

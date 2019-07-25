@@ -1,0 +1,4 @@
+---
+
+- name: restart {{ celerybeat_application_name }}
+  supervisorctl: name={{ celerybeat_application_name }} state=restarted

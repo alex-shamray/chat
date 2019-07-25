@@ -1,0 +1,15 @@
+---
+
+- name: Create the folder for the celery scripts
+  file: path={{ celerybeat_scripts_dir }}
+        owner={{ celerybeat_user }}
+        group={{ celerybeat_group }}
+        mode=0774
+        state=directory
+
+- name: Create the {{ celerybeat_application_name }} script file
+  template: src={{ celerybeat_template_file }}
+            dest={{ celerybeat_scripts_dir }}/{{ celerybeat_application_name }}_start
+            owner={{ celerybeat_user }}
+            group={{ celerybeat_group }}
+            mode=0755

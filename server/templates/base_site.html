@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block bodyclass %}{{ block.super }} fixed-sn white-skin{% endblock %}
+
+{% block main_content %}
+    {% include "includes/main_navigation.html" %}
+
+    <!--Main layout-->
+    <main>
+
+        <!--Main container-->
+        <div class="container-fluid">
+            {% block content %}{% endblock %}
+        </div>
+        <!--Main container-->
+
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer pt-0 mt-5 rgba-stylish-light">
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3 text-center">
+            <div class="container-fluid">
+                © {% now "Y" %} Copyright: <a href="/" target="_blank"> HouseholdBudget.net </a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+{% endblock %}
