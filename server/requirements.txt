@@ -4,7 +4,7 @@ channels==2.2.0
 channels_redis==2.4.0
 chardet==3.0.4
 Django==2.2.2
-djangorestframework==3.9.0
+djangorestframework==3.11.2
 django-debug-toolbar==1.9.1
 django-filter==2.0.0
 django-import-export==1.0.1
