@@ -1,4 +1,4 @@
-ansible==2.6.3
+ansible==2.9.20
 celery==4.2.0
 channels==2.2.0
 channels_redis==2.4.0
