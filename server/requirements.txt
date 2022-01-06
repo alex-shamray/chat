@@ -1,5 +1,5 @@
 ansible==2.6.3
-celery==4.2.0
+celery==5.2.2
 channels==2.2.0
 channels_redis==2.4.0
 chardet==3.0.4
