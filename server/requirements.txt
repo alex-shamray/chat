@@ -15,7 +15,7 @@ numpy==1.14.2
 pandas==0.22.0
 prospector==1.1.2
 psycopg2==2.7.5
-pyjwt==1.6.4
+pyjwt==2.4.0
 pyotp==2.2.7
 python-magic==0.4.15
 scikit-learn==0.20.3
