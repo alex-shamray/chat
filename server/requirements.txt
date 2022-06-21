@@ -11,7 +11,7 @@ django-import-export==1.0.1
 django-mptt==0.9.1
 django-redis-cache==2.0.0
 django-reversion==3.0.3
-numpy==1.14.2
+numpy==1.22.0
 pandas==0.22.0
 prospector==1.1.2
 psycopg2==2.7.5
